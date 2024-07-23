@@ -52,7 +52,7 @@ function Tasks() {
         </div>
         </div>
       <div className="h-[60vh]">
-        <div className="py-7 mb-[90px] px-5 text-white rounded-t-3xl h-full overflow-auto ">
+        <div className="py-7 px-5 text-white rounded-t-3xl h-full overflow-auto ">
           {mainTasks.map((x: any, i: number) =>
             <Card
               key={i}
