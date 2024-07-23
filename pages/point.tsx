@@ -8,12 +8,13 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IoWalletOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
+import { setMount } from "@/redux/reducers/TaskReducer";
 
 function Point() {
   const allTasks = useSelector((x: any) => x.TaskReducer.tasks)
   const extraTasks = allTasks?.filter((x: any) => x.extra === true)
   const user = useSelector((x: any) => x.TaskReducer.user);
-  const [mount, setMount] = useState(0);
+  const mount = useSelector((x:any) => x.TaskReducer.mount);
   useEffect(() => {
     const func = async () => {
       const {data} = await axios.get("https://ttpt-server.onrender.com/getUserById/"+user);
