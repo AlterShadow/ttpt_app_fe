@@ -41,13 +41,13 @@ function Tasks() {
         </div>
         <div className="w-full border-2 border-[#7D4DC2] flex justify-between rounded-xl px-5">
           <div className="pt-2 pb-1">
-            <div className="">Complete 6/16</div>
+            <div className="">Complete 5/5</div>
             <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
               <div className="bg-blue-600 h-2.5 rounded-full w-1/3"></div>
             </div>
           </div>
           <div className="px-2 pt-2 pb-1 font-semibold text-[34px] leading-[43px] border-l-2 border-[#7D4DC2] rounded-xl flex items-center">
-            +200 <span className="text-[13px] leading-9 pl-2">Points</span>
+            +5 <span className="text-[13px] leading-9 pl-2">Points</span>
           </div>
         </div>
         </div>
