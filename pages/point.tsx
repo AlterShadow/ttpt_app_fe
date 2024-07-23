@@ -7,7 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IoWalletOutline } from "react-icons/io5";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setMount } from "@/redux/reducers/TaskReducer";
 
 function Point() {
@@ -15,10 +15,11 @@ function Point() {
   const extraTasks = allTasks?.filter((x: any) => x.extra === true)
   const user = useSelector((x: any) => x.TaskReducer.user);
   const mount = useSelector((x:any) => x.TaskReducer.mount);
+  const dispatch = useDispatch();
   useEffect(() => {
     const func = async () => {
       const {data} = await axios.get("https://ttpt-app-be.onrender.com/users/2");
-      setMount(data?.mount)
+      dispatch(setMount(data?.mount));
     }
   }, [])
   const handleImageLoad = () => {
@@ -39,7 +40,7 @@ function Point() {
         <div className="text-white text-2xl">TTPT</div>
         <div className="flex space-x-1 text-[#818181]">
           <IoWalletOutline className="w-[18px] h-[16px]" />
-          <div className="text-sm">Balance</div>
+          <div className="text-sm">Balancee</div>
         </div>
         <div className="relative">
           <div className=" w-full h-full rounded-[999px] bg-[#DA01AA] blur-3xl absolute top-0 left-0 z-[-1]"></div>
@@ -49,7 +50,7 @@ function Point() {
         </div>
         <div className="font-semibold text-sm text-white">Points</div>
       </div>
-      <div className="px-5">
+      <div className="px-5 py-10">
       {extraTasks.map((x: any, i: number) =>
           <YoutubeCard
             key={i}
