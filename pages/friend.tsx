@@ -64,10 +64,7 @@ function Friend() {
         
         
         <div className="my-5 font-bold text-lg leading-7 text-white">My Friends</div>
-        <div className="text-[13px] leading-5 text-white">
-            Refer a friend and earn 10% of the points they accumulate, plus an
-            additional 3% from their referrals
-          </div>
+        
         {items.length === 0 ? (
           <>
             <div className="font-medium text-[14px]  mt-3 mb-[25px] text-gray-400">
