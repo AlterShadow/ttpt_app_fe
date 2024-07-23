@@ -17,7 +17,7 @@ function Point() {
   const mount = useSelector((x:any) => x.TaskReducer.mount);
   useEffect(() => {
     const func = async () => {
-      const {data} = await axios.get("https://ttpt-server.onrender.com/getUserById/"+user);
+      const {data} = await axios.get("https://ttpt-app-be.onrender.com/getUserById/"+user);
       setMount(data?.mount)
     }
   }, [])

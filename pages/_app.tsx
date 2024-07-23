@@ -25,7 +25,7 @@ const AppWrapper = ({ Component, pageProps }: any) => {
     setIsMobile(userAgent.includes("Mobi"));
     const func = async () => {
       const { data } = await axios.get(
-        "https://ttpt-server.onrender.com/tasks"
+        "https://ttpt-app-be.onrender.com/tasks"
       );
       dispatch(setTasks(data));
     };

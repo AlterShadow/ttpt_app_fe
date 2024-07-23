@@ -19,7 +19,7 @@ export default function Index() {
     if (userFromQuery) {
       const func = async () => {
         const { data } = await axios.post(
-          "https://ttpt-server.onrender.com/users",
+          "https://ttpt-app-be.onrender.com/users",
           {
             user: userFromQuery,
           }

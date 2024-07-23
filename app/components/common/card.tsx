@@ -49,7 +49,7 @@ function Card({ title, description, price, link, img, onLoad }: CardProps) {
   const handleBonus = () => {
     setDoing(true);
     axios
-      .post("https://ttpt-server.onrender.com/bonus", {
+      .post("https://ttpt-app-be.onrender.com/bonus", {
         user,
         title,
         price,

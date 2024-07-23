@@ -57,7 +57,7 @@ function YoutubeCard({
     if (doing || !watched) return;
     setDoing(true);
     axios
-      .post("https://ttpt-server.onrender.com/bonus", {
+      .post("https://ttpt-app-be.onrender.com/bonus", {
         user,
         title,
         price,
