@@ -48,12 +48,25 @@ function Point() {
         </div>
         <div className="font-semibold text-sm text-white">Points</div>
       </div>
-      <Link
+      <div className="px-5">
+      {extraTasks.map((x: any, i: number) =>
+          <YoutubeCard
+            key={i}
+            title={x.title}
+            description={x.description}
+            price={x.price}
+            link={x.link}
+            img={x.image}
+            onLoad={handleImageLoad}
+          />
+        )}
+      </div>
+      {/* <Link
           href={"earn"}
           className="mt-20 p-3 font-semibold text-[17px] text-white flex justify-center items-center w-full py-5 bg-gradient-to-r from-[#7D4DC2] to-[#008AD8] shadow-md rounded-lg hover:curpointer active:shadow-none"
         >
           Watch To Earn
-        </Link>
+        </Link> */}
     </div>
   );
 }
