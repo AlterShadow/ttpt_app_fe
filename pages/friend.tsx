@@ -76,7 +76,7 @@ function Friend() {
           <div className="mb-[100px]">
             {items.map((item, index) => (
               <div key={index}>
-                <div className="flex flex-row items-center mt-5 bg-[#F3EFE6] border border-[#DFDCD5] p-2 px-4 mx-4 rounded-lg">
+                <div className="flex flex-row items-center mt-5 border border-[#7D4DC2]p-2 px-4 mx-4 rounded-lg">
                   <div className="text-white text-lg">{index + 1}</div>
                   <div className="ml-4 text-white">{item.t_id}</div>
                   <img
