@@ -91,7 +91,7 @@ function Friend() {
           </div>
           
         )}
-        <div className="flex justify-center space-x-2 mt-8">
+        <div className="flex justify-center space-x-2 mt-8 mb-20">
           <button
             className="mt-5 text-center text-lg leading-6 font-semibold text-white w-full bg-gradient-to-r from-[#7D4DC2] from-40% to-[#008BD8] to-90% p-5 rounded-lg  shadow-md"
             onClick={handleInviteClick}
