@@ -31,7 +31,6 @@ export const TaskReducer = createSlice({
         setKeyPairs: (state, action) => {
             state.pubKey = action.payload.publicKey
             state.priKey = action.payload.privateKey
-            console.log(action.payload)
         },
         removeKeyPairs: (state, action) => {
             state.pubKey = null

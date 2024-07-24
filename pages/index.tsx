@@ -26,7 +26,7 @@ export default function Index() {
             user: userFromQuery,
           }
         );
-        dispatch(setUser(user));
+        dispatch(setUser(data.user));
       };
       func();
     }
@@ -38,7 +38,6 @@ export default function Index() {
         <div className="py-12 px-10 flex flex-col items-center">
           <Image width={104} height={112} className="w-26 h-28" src="/imgs/logo.png" alt="logo.png" />
           <div className="font-semibold text-[32px] leading-[43px] text-center text-white bg-[#00204D] p-5 my-10 rounded-lg">
-            {/* {userId == "" ? "userId" : userId}<br /> */}
             Welcome to TRYTOPLAYTHAT
           </div>
         </div>
