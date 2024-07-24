@@ -42,6 +42,7 @@ function Friend() {
         console.error('Failed to copy: ', err);
       }
     }
+    copyContent();
 }  
 
   const handleInviteClick = async () => {
