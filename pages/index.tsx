@@ -24,7 +24,7 @@ export default function Index() {
             user: userFromQuery,
           }
         );
-        dispatch(setUser("dark"));
+        dispatch(setUser(user));
       };
       func();
     }

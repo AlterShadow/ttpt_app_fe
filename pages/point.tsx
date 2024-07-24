@@ -16,8 +16,8 @@ function Point() {
   const dispatch = useDispatch();
   useEffect(() => {
     const func = async () => {
-      const {data} = await axios.get("https://ttpt-app-be.onrender.com/users/2");
-      dispatch(setMount(data?.mount));
+      const {data} = await axios.get("https://ttpt-app-be.onrender.com/users/"+user);
+      if(data.length !== 0) dispatch(setMount(data.mount));
     }
   }, [])
   const handleImageLoad = () => {
@@ -38,7 +38,7 @@ function Point() {
         <div className="text-white text-2xl">TTPT</div>
         <div className="flex space-x-1 text-[#818181]">
           <IoWalletOutline className="w-[18px] h-[16px]" />
-          <div className="text-sm">Balancee</div>
+          <div className="text-sm">Balance</div>
         </div>
         <div className="relative">
           <div className=" w-full h-full rounded-[999px] bg-[#DA01AA] blur-3xl absolute top-0 left-0 z-[-1]"></div>

@@ -140,7 +140,7 @@ function Card({ title, description, price, link, img, onLoad }: CardProps) {
               </span>
               <span className="flex justify-center mt-[29.08px]">
                 <button
-                  className="px-4 h-[82px] font-semibold text-[24px] bg-main text-white rounded-[16px] transition duration-300 disabled:opacity-40 disabled:cursor-not-allowed w-full"
+                  className="px-4 h-[82px] font-semibold text-[24px] bg-main text-white rounded-[16px] transition duration-300 disabled:opacity-40 disabled:cursor-not-allowed w-full overflow-hidden"
                   onClick={handleBonus}
                   disabled={doing}
                 >
