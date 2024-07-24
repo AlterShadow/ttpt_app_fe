@@ -149,7 +149,7 @@ function YoutubeCard({
                 opts={{
                   height: "300",
                   width: "100%",
-                  playerVars: { autoplay: 1 },
+                  playerVars: { autoplay: 0 },
                 }}
                 onStateChange={onReady}
               />
