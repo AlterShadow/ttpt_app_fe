@@ -68,10 +68,10 @@ function Card({ title, description, price, link, img, onLoad}: CardProps) {
           snackbar.enqueueSnackbar("You need to wait 24 hours for next time", {
             autoHideDuration: 1000,
           });
-        setTimeout(() => (forceRef?.current as any).click(), 1000);
-        setOpen(false);
-        setDoing(false);
-        dispatch(setDone(done+1));
+          setTimeout(() => (forceRef?.current as any).click(), 1000);
+          setOpen(false);
+          setDoing(false);
+          dispatch(setDone(done+1));
       });
   };
   return (

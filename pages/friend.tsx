@@ -7,11 +7,13 @@ interface Item {
   t_id: string;
   mount: number;
 }
+declare const window: any;
 
 function Friend() {
   const user = useSelector((x: any) => x.TaskReducer.user);
   const [items, setItems] = useState<Item[]>([]);
   const { enqueueSnackbar } = useSnackbar();
+  const { data } = window.navigator;
   useEffect(() => {
     const fetchData = async () => {
       if (user) {
@@ -36,7 +38,7 @@ function Friend() {
     const copyContent = async () => {
       try {
         await window.navigator.clipboard.writeText(shareLink);
-        enqueueSnackbar("Invite link copied to clipboard!", { variant: "success" });
+        // enqueueSnackbar("Invite link copied to clipboard!", { variant: "success" });
         
       } catch (err) {
         console.error('Failed to copy: ', err);
@@ -75,7 +77,7 @@ function Friend() {
         </div>
         
         
-        <div className="my-5 font-bold text-lg leading-7 text-white">My Friends</div>
+        <div className="my-5 font-bold text-lg leading-7 text-white">{data}</div>
         
         {items.length === 0 ? (
           <>
@@ -110,9 +112,9 @@ function Friend() {
           >
             Invite a friend
           </button>
-          <button className="mt-5 p-5 bg-gradient-to-r from-[#008BD8] from-40% to-[#7D4DC2] to-90% rounded-[12px] disabled:cursor-not-allowed" onClick={copyToClipboard}>
+          {/* <button className="mt-5 p-5 bg-gradient-to-r from-[#008BD8] from-40% to-[#7D4DC2] to-90% rounded-[12px] disabled:cursor-not-allowed" onClick={copyToClipboard}>
             <img  src="/images/copy.svg" />
-          </button>
+          </button> */}
         </div>
       </div>
     </>
