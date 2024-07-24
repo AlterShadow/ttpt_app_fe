@@ -12,21 +12,29 @@ function Point() {
   const allTasks = useSelector((x: any) => x.TaskReducer.tasks)
   const extraTasks = allTasks?.filter((x: any) => x.extra === true)
   const user = useSelector((x: any) => x.TaskReducer.user);
-  // const user = "fourg_dh";
+  
   const mount = useSelector((x:any) => x.TaskReducer.mount);
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
   useEffect(() => {
+    let id = 0;
     const calc = async () => {
       let sum = 0;
       const {data} = await axios.get("https://ttpt-app-be.onrender.com/users");
       console.log(data)
-      for(let i = 0 ; i < data.length ; i ++) sum += data[i].mount;
-      setTotal(sum);
+      if(data.length) {
+        for(let i = 0 ; i < data.length ; i ++) {
+          sum += data[i].mount;
+          if(user === data[i].tgid) id = data[i].id;
+        }
+        setTotal(sum);
+      }
     }
+    console.log(user)
+    console.log(id)
     calc();
     const func = async () => {
-      const {data} = await axios.get("https://ttpt-app-be.onrender.com/users/2");
+      const {data} = await axios.get(`https://ttpt-app-be.onrender.com/users/${id}`);
       if(data.length !== 0) dispatch(setMount(data[0].mount));
     }
     func();

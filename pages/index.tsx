@@ -15,7 +15,9 @@ export default function Index() {
   const user = useSelector((x: any) => x.TaskReducer.user);
   const router = useRouter();
   const userFromQuery = router.query.user?.toString() || "";
+
   useEffect(() => {
+    
     if (userFromQuery) {
       const func = async () => {
         const { data } = await axios.post(
@@ -37,7 +39,7 @@ export default function Index() {
           <Image width={104} height={112} className="w-26 h-28" src="/imgs/logo.png" alt="logo.png" />
           <div className="font-semibold text-[32px] leading-[43px] text-center text-white bg-[#00204D] p-5 my-10 rounded-lg">
             {/* {userId == "" ? "userId" : userId}<br /> */}
-            Welcome to TRYTOPLAYTHAT
+            Welcome to TRYTOPLAYTHAT {userFromQuery}
           </div>
         </div>
         <Link
