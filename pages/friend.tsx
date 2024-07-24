@@ -33,29 +33,28 @@ function Friend() {
     inviteLink
   )}`;
   function copyToClipboard() {  
-    window.navigator.clipboard.writeText(shareLink).then(() => {  
-        console.log('Text copied to clipboard');  
-    }).catch(err => {  
-        console.error('Failed to copy: ', err);  
-    });  
+    const copyContent = async () => {
+      try {
+        await navigator.clipboard.writeText(shareLink);
+        enqueueSnackbar("Invite link copied to clipboard!", { variant: "success" });
+        
+      } catch (err) {
+        console.error('Failed to copy: ', err);
+      }
+    }
 }  
 
   const handleInviteClick = async () => {
     // Generate the invite link
-    console.log(inviteLink);
-
+    copyToClipboard();
     // Show the invite link in a snackbar or modal
-    enqueueSnackbar("Invite link copied to clipboard!", { variant: "success" });
 
     // Copy the link to the clipboard
 
     // Open the share link in a new window
     window.open(shareLink, "_blank");
   };
-  const copy = () => {
-    enqueueSnackbar("Invite link copied to clipboard!", { variant: "success" });
-
-  }
+  
 
   return (
     <>
@@ -82,7 +81,7 @@ function Friend() {
             <div className="font-medium text-[14px]  mt-3 mb-[25px] text-gray-400">
               You haven&apos;t invited anyone yet
             </div>
-            <img className="w-[186px] mx-auto" src="/imgs/no.png" onClick={copyToClipboard} /> 
+            <img className="w-[186px] mx-auto" src="/imgs/no.png" /> 
           </>
         ) : (
           <div className="mb-[100px]">
@@ -110,7 +109,7 @@ function Friend() {
           >
             Invite a friend
           </button>
-          <button className="mt-5 p-5 bg-gradient-to-r from-[#008BD8] from-40% to-[#7D4DC2] to-90% rounded-[12px] disabled:cursor-not-allowed" onClick={copy}>
+          <button className="mt-5 p-5 bg-gradient-to-r from-[#008BD8] from-40% to-[#7D4DC2] to-90% rounded-[12px] disabled:cursor-not-allowed" onClick={copyToClipboard}>
             <img  src="/images/copy.svg" />
           </button>
         </div>
