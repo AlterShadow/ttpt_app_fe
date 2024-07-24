@@ -23,7 +23,6 @@ function Tasks() {
     // });
   };
   const submit = () => {
-    alert()
     setDone(done + 1)
   }
 

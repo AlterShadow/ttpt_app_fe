@@ -68,8 +68,8 @@ function Card({ title, description, price, link, img, onLoad, onSubmit}: CardPro
           });
         setTimeout(() => (forceRef?.current as any).click(), 1000);
         setOpen(false);
-        onsubmit;
         setDoing(false);
+        onSubmit();
       });
   };
   return (
