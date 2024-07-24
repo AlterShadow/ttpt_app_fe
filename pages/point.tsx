@@ -15,10 +15,19 @@ function Point() {
   // const user = "fourg_dh";
   const mount = useSelector((x:any) => x.TaskReducer.mount);
   const dispatch = useDispatch();
+  const [total, setTotal] = useState(0);
   useEffect(() => {
+    const calc = async () => {
+      let sum = 0;
+      const {data} = await axios.get("https://ttpt-app-be.onrender.com/users");
+      console.log(data)
+      for(let i = 0 ; i < data.length ; i ++) sum += data[i].mount;
+      setTotal(sum);
+    }
+    calc();
     const func = async () => {
       const {data} = await axios.get("https://ttpt-app-be.onrender.com/users/2");
-      if(data.length !== 0) dispatch(setMount(data.mount));
+      if(data.length !== 0) dispatch(setMount(data[0].mount));
     }
     func();
   }, [])
@@ -27,6 +36,7 @@ function Point() {
 
   return (
     <div className="flex-col">
+      <div className="fixed top-24 left-0 text-white text-base">TOTAL : {total}</div>
       <div className="w-full flex flex-col space-y-4 items-center ">
         <div className="w-24 h-24 p-6 bg-[#002A65] border-2 border-[#000B6E] rounded-full flex flex-col justify-center items-center">
           <Image
