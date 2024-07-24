@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import {useDispatch, useSelector} from "react-redux"
 import axios from "axios";
-import { setUser } from "@/redux/reducers/TaskReducer";
+import { setUser, setUserId } from "@/redux/reducers/TaskReducer";
 
 
 
@@ -15,7 +15,7 @@ export default function Index() {
   const user = useSelector((x: any) => x.TaskReducer.user);
   const router = useRouter();
   const userFromQuery = router.query.user?.toString() || "";
-
+  
   useEffect(() => {
     
     if (userFromQuery) {

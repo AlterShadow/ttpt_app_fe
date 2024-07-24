@@ -21,23 +21,21 @@ function Point() {
     const calc = async () => {
       let sum = 0;
       const {data} = await axios.get("https://ttpt-app-be.onrender.com/users");
-      console.log(data)
+      console.log(data.length)
       if(data.length) {
         for(let i = 0 ; i < data.length ; i ++) {
           sum += data[i].mount;
-          if(user === data[i].tgid) id = data[i].id;
+          if(user === data[i].tgid) dispatch(setMount(data[i].mount))
         }
         setTotal(sum);
       }
     }
-    console.log(user)
-    console.log(id)
     calc();
-    const func = async () => {
-      const {data} = await axios.get(`https://ttpt-app-be.onrender.com/users/${id}`);
-      if(data.length !== 0) dispatch(setMount(data[0].mount));
-    }
-    func();
+    // const func = async () => {
+    //   const {data} = await axios.get(`https://ttpt-app-be.onrender.com/users/${id}`);
+    //   if(data.length !== 0) dispatch(setMount(data[0].mount));
+    // }
+    // func();
   }, [])
   const handleImageLoad = () => {
   }
