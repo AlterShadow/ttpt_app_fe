@@ -9,8 +9,9 @@ import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import axios from "@/app/axios";
 import { useSnackbar } from "notistack";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../../globals.css";
+import { setMount } from "@/redux/reducers/TaskReducer";
 
 interface CardProps {
   title: string;
@@ -44,7 +45,7 @@ function YoutubeCard({
   const [doing, setDoing] = useState(false);
   const [watched, setWatched] = useState(false);
   const playerRef = useRef();
-
+  const dispatch = useDispatch();
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -64,11 +65,13 @@ function YoutubeCard({
       })
       .then((response: any) => {
         console.log(response.data);
-        if (response.data.stats == "success")
+        if (response.data.stats == "success") {
           snackbar.enqueueSnackbar(
             `You gain ${price} coins.  Your balance is ${response.data.mount}`,
             { autoHideDuration: 1000 }
           );
+          dispatch(setMount(response.data.mount));
+        }
         else
           snackbar.enqueueSnackbar("You need to wait 24 hours for next time", {
             autoHideDuration: 1000,
