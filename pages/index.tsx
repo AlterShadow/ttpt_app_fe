@@ -15,7 +15,7 @@ export default function Index() {
   const user = useSelector((x: any) => x.TaskReducer.user);
   const router = useRouter();
   const userFromQuery = router.query.user?.toString() || "";
-  
+  // const userFromQuery = "fourg_dh";
   useEffect(() => {
     
     if (userFromQuery) {

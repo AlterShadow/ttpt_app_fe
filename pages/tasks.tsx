@@ -22,6 +22,10 @@ function Tasks() {
     //     return newCount;
     // });
   };
+  const submit = () => {
+    alert()
+    setDone(done + 1)
+  }
 
   return (
     <div className="flex-col space-y-10 text-white">
@@ -50,7 +54,7 @@ function Tasks() {
             </div>
           </div>
           <div className="w-1/2 px-2 pt-2 pb-1 font-semibold text-[34px] leading-[43px] border-l-2 border-[#7D4DC2] rounded-xl flex items-center justify-center">
-            +{cnt} <span className="text-[13px] leading-9 pl-2">Points</span>
+            +{done} <span className="text-[13px] leading-9 pl-2">Points</span>
           </div>
         </div>
         </div>
@@ -65,6 +69,7 @@ function Tasks() {
               link={x.link}
               img={x.image}
               onLoad={handleImageLoad}
+              onSubmit={submit}
             />
           )}
           

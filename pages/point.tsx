@@ -40,7 +40,7 @@ function Point() {
 
   return (
     <div className="flex-col">
-      <div className="fixed top-24 left-0 text-white text-base">TOTAL : {total}</div>
+      <div className=" text-white text-base p-3">Total Community Point : {total}</div>
       <div className="w-full flex flex-col space-y-4 items-center ">
         <div className="w-24 h-24 p-6 bg-[#002A65] border-2 border-[#000B6E] rounded-full flex flex-col justify-center items-center">
           <Image
