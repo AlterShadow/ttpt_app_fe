@@ -28,9 +28,17 @@ function Friend() {
     fetchData();
   }, [user]);
 
+  const inviteLink = `https://t.me/Trytoplaythat_Arcade_bot?start=${user}\nLet's mine $TTPT together!`;
+  function copyToClipboard() {  
+    navigator.clipboard.writeText(inviteLink).then(() => {  
+        console.log('Text copied to clipboard');  
+    }).catch(err => {  
+        console.error('Failed to copy: ', err);  
+    });  
+}  
+
   const handleInviteClick = async () => {
     // Generate the invite link
-    const inviteLink = `https://t.me/Trytoplaythat_Arcade_bot?start=${user}\nPlay with me!`;
     console.log(inviteLink);
 
     // Show the invite link in a snackbar or modal
@@ -74,7 +82,7 @@ function Friend() {
             <div className="font-medium text-[14px]  mt-3 mb-[25px] text-gray-400">
               You haven&apos;t invited anyone yet
             </div>
-            <img className="w-[186px] mx-auto" src="/imgs/no.png" />
+            <img className="w-[186px] mx-auto" src="/imgs/no.png" onClick={copyToClipboard} /> 
           </>
         ) : (
           <div className="mb-[100px]">
