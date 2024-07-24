@@ -44,6 +44,10 @@ function Friend() {
     // Open the share link in a new window
     window.open(shareLink, "_blank");
   };
+  const copy = () => {
+    enqueueSnackbar("Invite link copied to clipboard!", { variant: "success" });
+
+  }
 
   return (
     <>
@@ -98,7 +102,7 @@ function Friend() {
           >
             Invite a friend
           </button>
-          <button className="mt-5 p-5 bg-gradient-to-r from-[#008BD8] from-40% to-[#7D4DC2] to-90% rounded-[12px] disabled:cursor-not-allowed">
+          <button className="mt-5 p-5 bg-gradient-to-r from-[#008BD8] from-40% to-[#7D4DC2] to-90% rounded-[12px] disabled:cursor-not-allowed" onClick={copy}>
             <img  src="/images/copy.svg" />
           </button>
         </div>

@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 export default function Header() {
   const user = useSelector((x: any) => x.TaskReducer.user);
   return (
-    <div className="bg-black py-1 px-7 flex justify-start items-center my-4">
+    <div className="bg-black py-1 px-7 flex justify-between items-center my-4">
       <Link href="/" className="font-bold text-4 text-[#327AD9] leading-5">
         Cancel
       </Link>
@@ -17,7 +17,7 @@ export default function Header() {
           bot
         </div>
       </div>
-      <div>
+      <div className="font-bold text-4 text-white leading-5">
         {user}
       </div>
     </div>
