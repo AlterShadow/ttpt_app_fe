@@ -68,7 +68,6 @@ function Tasks() {
               link={x.link}
               img={x.image}
               onLoad={handleImageLoad}
-              onSubmit={submit}
             />
           )}
           

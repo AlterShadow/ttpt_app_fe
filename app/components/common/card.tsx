@@ -20,7 +20,6 @@ interface CardProps {
   link: string;
   img: string;
   onLoad: () => void;
-  onSubmit: () => void;
 }
 
 const Transition = forwardRef(function Transition(
@@ -32,7 +31,7 @@ const Transition = forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function Card({ title, description, price, link, img, onLoad, onSubmit}: CardProps) {
+function Card({ title, description, price, link, img, onLoad}: CardProps) {
   const user = useSelector((x: any) => x.TaskReducer.user);
   const snackbar = useSnackbar();
   const [open, setOpen] = useState(false);
@@ -69,7 +68,6 @@ function Card({ title, description, price, link, img, onLoad, onSubmit}: CardPro
         setTimeout(() => (forceRef?.current as any).click(), 1000);
         setOpen(false);
         setDoing(false);
-        onSubmit();
       });
   };
   return (
