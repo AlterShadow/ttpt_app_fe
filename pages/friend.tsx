@@ -29,8 +29,11 @@ function Friend() {
   }, [user]);
 
   const inviteLink = `https://t.me/Trytoplaythat_Arcade_bot?start=${user}\nLet's mine $TTPT together!`;
+  const shareLink = `https://t.me/share/url?url=${encodeURIComponent(
+    inviteLink
+  )}`;
   function copyToClipboard() {  
-    navigator.clipboard.writeText(inviteLink).then(() => {  
+    navigator.clipboard.writeText(shareLink).then(() => {  
         console.log('Text copied to clipboard');  
     }).catch(err => {  
         console.error('Failed to copy: ', err);  
@@ -45,9 +48,6 @@ function Friend() {
     enqueueSnackbar("Invite link copied to clipboard!", { variant: "success" });
 
     // Copy the link to the clipboard
-    const shareLink = `https://t.me/share/url?url=${encodeURIComponent(
-      inviteLink
-    )}`;
 
     // Open the share link in a new window
     window.open(shareLink, "_blank");
