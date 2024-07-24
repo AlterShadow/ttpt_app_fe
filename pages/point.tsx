@@ -59,7 +59,7 @@ function Point() {
         <div className="relative">
           <div className=" w-full h-full rounded-[999px] bg-[#DA01AA] blur-3xl absolute top-0 left-0 z-[-1]"></div>
           <div className="font-bold text-[53px] text-white">
-            <span>{user}</span>
+            <span>{mount}</span>
           </div>
         </div>
         <div className="font-semibold text-sm text-white">Points</div>
