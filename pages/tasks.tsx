@@ -9,7 +9,7 @@ function Tasks() {
   const allTasks = useSelector((x: any) => x.TaskReducer.tasks)
   const mainTasks = allTasks?.filter((x: any) => x.extra === false)
   const [cnt, setCnt] = useState(mainTasks.length);
-  const [done, setDone] = useState(5);
+  const [done, setDone] = useState(0);
   const user = useSelector((x: any) => x.TaskReducer.user);
   const handleImageLoad = () => {
     // setImagesLoaded((prev) => {

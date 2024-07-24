@@ -150,7 +150,7 @@ function Card({ title, description, price, link, img, onLoad }: CardProps) {
                     target="_self"
                     href={link}
                   >
-                    Join to our {title} 
+                    {title} 
                   </Link>
                 </button>
               </span>
