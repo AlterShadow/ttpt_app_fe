@@ -12,7 +12,6 @@ function Point() {
   const allTasks = useSelector((x: any) => x.TaskReducer.tasks)
   const extraTasks = allTasks?.filter((x: any) => x.extra === true)
   const user = useSelector((x: any) => x.TaskReducer.user);
-  
   const mount = useSelector((x:any) => x.TaskReducer.mount);
   const dispatch = useDispatch();
   const [total, setTotal] = useState(0);
@@ -21,7 +20,6 @@ function Point() {
     const calc = async () => {
       let sum = 0;
       const {data} = await axios.get("https://ttpt-app-be.onrender.com/users");
-      console.log(data.length)
       if(data.length) {
         for(let i = 0 ; i < data.length ; i ++) {
           sum += data[i].mount;
@@ -61,7 +59,7 @@ function Point() {
         <div className="relative">
           <div className=" w-full h-full rounded-[999px] bg-[#DA01AA] blur-3xl absolute top-0 left-0 z-[-1]"></div>
           <div className="font-bold text-[53px] text-white">
-            <span>{mount}</span>
+            <span>{user}</span>
           </div>
         </div>
         <div className="font-semibold text-sm text-white">Points</div>
