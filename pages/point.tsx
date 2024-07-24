@@ -1,10 +1,8 @@
 "use Client";
 
-import Card from "@/app/components/common/card";
 import YoutubeCard from "@/app/components/common/youtubecard";
 import axios from "@/app/axios";
 import Image from "next/image";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 import { IoWalletOutline } from "react-icons/io5";
 import { useDispatch, useSelector } from "react-redux";

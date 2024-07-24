@@ -127,14 +127,6 @@ function Card({ title, description, price, link, img, onLoad }: CardProps) {
               <span className="mt-[17px] font-medium text-[14px] leading-[14px] text-[#6E6E6E]">
                 {description}
               </span>
-              <Link
-                ref={forceRef}
-                className="text-black"
-                target="_self"
-                href={link}
-              >
-                Join to our {title} 
-              </Link>
               <span className="mt-[61px] font-semibold text-[16px] leading-[16px] text-[#6E6E6E]">
                 Reward
               </span>
@@ -152,7 +144,14 @@ function Card({ title, description, price, link, img, onLoad }: CardProps) {
                   onClick={handleBonus}
                   disabled={doing}
                 >
-                  Get Point
+              <Link
+                ref={forceRef}
+                className="text-black"
+                target="_self"
+                href={link}
+              >
+                Join to our {title} 
+              </Link>
                 </button>
               </span>
             </span>
