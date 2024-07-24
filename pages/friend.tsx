@@ -35,7 +35,7 @@ function Friend() {
   function copyToClipboard() {  
     const copyContent = async () => {
       try {
-        await navigator.clipboard.writeText(shareLink);
+        await window.navigator.clipboard.writeText(shareLink);
         enqueueSnackbar("Invite link copied to clipboard!", { variant: "success" });
         
       } catch (err) {
