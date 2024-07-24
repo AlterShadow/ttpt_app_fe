@@ -33,7 +33,7 @@ function Friend() {
     inviteLink
   )}`;
   function copyToClipboard() {  
-    navigator.clipboard.writeText(shareLink).then(() => {  
+    window.navigator.clipboard.writeText(shareLink).then(() => {  
         console.log('Text copied to clipboard');  
     }).catch(err => {  
         console.error('Failed to copy: ', err);  
