@@ -50,10 +50,10 @@ function Friend() {
       <div className="flex flex-col px-5 pt-[23px] rounded-t-3xl flex-1 h-0 overflow-auto">
         <div className="font-bold text-xl leading-7 text-white">
           Invite friends to earn more Points
-          <br /> Already invited 0 friend
+          <br /> Already invited {items.length} friend
           <div className="w-full flex justify-between border-2 border-[#7D4DC2] p-5 my-6 rounded-lg text-white">
             <div className="flex justify-start items-center">
-              <div className="font-bold text-2xl leading-7">0.0000</div>
+              <div className="font-bold text-2xl leading-7">{items.length}</div>
               <div className="font-semibold text-xs leading-5 pl-4">Points</div>
             </div>
             <div className="flex justify-end items-center px-5 py-1 bg-[#7D4DC2] rounded-lg text-xs leading-6">
