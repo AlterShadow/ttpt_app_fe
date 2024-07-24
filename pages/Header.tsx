@@ -14,10 +14,9 @@ export default function Header() {
         <div className="font-semibold text-4 text-[#818181] text-center">
           bot
         </div>
+        
       </div>
-      <div className="pl-20">
-        <CiCircleMore className="w-6 h-6 text-white" />
-      </div>
+      <div> </div>
     </div>
   );
 }

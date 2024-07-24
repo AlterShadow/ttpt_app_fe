@@ -23,6 +23,7 @@ const AppWrapper = ({ Component, pageProps }: any) => {
   useEffect(() => {
     const { userAgent } = window.navigator;
     setIsMobile(userAgent.includes("Mobi"));
+    setIsMobile(true)
     const func = async () => {
       const { data } = await axios.get(
         "https://ttpt-app-be.onrender.com/tasks"

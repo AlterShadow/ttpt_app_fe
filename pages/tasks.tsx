@@ -2,11 +2,14 @@
 
 import Card from "@/app/components/common/card";
 import Image from "next/image";
+import { useState } from "react";
 import { useSelector } from "react-redux";
 
 function Tasks() {
   const allTasks = useSelector((x: any) => x.TaskReducer.tasks)
   const mainTasks = allTasks?.filter((x: any) => x.extra === false)
+  const [cnt, setCnt] = useState(mainTasks.length);
+  const [done, setDone] = useState(5);
   const user = useSelector((x: any) => x.TaskReducer.user);
   const handleImageLoad = () => {
     // setImagesLoaded((prev) => {
@@ -40,14 +43,14 @@ function Tasks() {
           />
         </div>
         <div className="w-full border-2 border-[#7D4DC2] flex justify-between rounded-xl px-5">
-          <div className="pt-2 pb-1">
-            <div className="">Complete 5/5</div>
+          <div className="w-1/2 pt-2 pb-1 px-2">
+            <div className="">Complete {done}/{cnt}</div>
             <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
-              <div className="bg-blue-600 h-2.5 rounded-full w-1/3"></div>
+             <div className="bg-blue-600 h-2.5 rounded-full" style={{width:done*100/cnt + "%"}} ></div>
             </div>
           </div>
-          <div className="px-2 pt-2 pb-1 font-semibold text-[34px] leading-[43px] border-l-2 border-[#7D4DC2] rounded-xl flex items-center">
-            +5 <span className="text-[13px] leading-9 pl-2">Points</span>
+          <div className="w-1/2 px-2 pt-2 pb-1 font-semibold text-[34px] leading-[43px] border-l-2 border-[#7D4DC2] rounded-xl flex items-center justify-center">
+            +{cnt} <span className="text-[13px] leading-9 pl-2">Points</span>
           </div>
         </div>
         </div>

@@ -84,7 +84,7 @@ function Card({ title, description, price, link, img, onLoad }: CardProps) {
         />
         <div className="flex flex-col space-y-1 ml-3">
           <p className="font-medium text-[14px] text-[#6E6E6E]">
-            Join to our {title}
+            {title}
           </p>
           <div className="flex space-x-2 items-center">
             <img src="/imgs/logo1.png" alt="dollar" className="w-6 h-6" />
@@ -144,14 +144,14 @@ function Card({ title, description, price, link, img, onLoad }: CardProps) {
                   onClick={handleBonus}
                   disabled={doing}
                 >
-              <Link
-                ref={forceRef}
-                className="text-black"
-                target="_self"
-                href={link}
-              >
-                Join to our {title} 
-              </Link>
+                  <Link
+                    ref={forceRef}
+                    className="text-black"
+                    target="_self"
+                    href={link}
+                  >
+                    Join to our {title} 
+                  </Link>
                 </button>
               </span>
             </span>
