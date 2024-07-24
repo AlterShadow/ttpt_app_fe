@@ -12,13 +12,15 @@ function Point() {
   const allTasks = useSelector((x: any) => x.TaskReducer.tasks)
   const extraTasks = allTasks?.filter((x: any) => x.extra === true)
   const user = useSelector((x: any) => x.TaskReducer.user);
+  // const user = "fourg_dh";
   const mount = useSelector((x:any) => x.TaskReducer.mount);
   const dispatch = useDispatch();
   useEffect(() => {
     const func = async () => {
-      const {data} = await axios.get("https://ttpt-app-be.onrender.com/users/"+user);
+      const {data} = await axios.get("https://ttpt-app-be.onrender.com/users/2");
       if(data.length !== 0) dispatch(setMount(data.mount));
     }
+    func();
   }, [])
   const handleImageLoad = () => {
   }
