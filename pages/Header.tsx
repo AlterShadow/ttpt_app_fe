@@ -9,7 +9,7 @@ export default function Header() {
       <Link href="/" className="font-bold text-4 text-[#327AD9] leading-5">
         Cancel
       </Link>
-      <div className="flex flex-col justify-center items-center pl-20">
+      <div className="flex flex-col justify-center items-center">
         <div className="font-bold text-4 text-white leading-5 text-center">
           TRYTOPLAYTHAT
         </div>
