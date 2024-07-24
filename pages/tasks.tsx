@@ -1,16 +1,23 @@
 "use Client";
 
 import Card from "@/app/components/common/card";
+import { setDone } from "@/redux/reducers/TaskReducer";
 import Image from "next/image";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 function Tasks() {
+  const dispatch = useDispatch();
   const allTasks = useSelector((x: any) => x.TaskReducer.tasks)
   const mainTasks = allTasks?.filter((x: any) => x.extra === false)
   const [cnt, setCnt] = useState(mainTasks.length);
   const done = useSelector((x: any) => x.TaskReducer.done);
   const user = useSelector((x: any) => x.TaskReducer.user);
+  useEffect(() => {
+    if(done > cnt) {
+      dispatch(setDone(cnt))
+    }
+  })
   const handleImageLoad = () => {
     // setImagesLoaded((prev) => {
     //     console.log(prev)
