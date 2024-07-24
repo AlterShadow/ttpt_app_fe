@@ -9,7 +9,7 @@ function Tasks() {
   const allTasks = useSelector((x: any) => x.TaskReducer.tasks)
   const mainTasks = allTasks?.filter((x: any) => x.extra === false)
   const [cnt, setCnt] = useState(mainTasks.length);
-  const [done, setDone] = useState(0);
+  const done = useSelector((x: any) => x.TaskReducer.done);
   const user = useSelector((x: any) => x.TaskReducer.user);
   const handleImageLoad = () => {
     // setImagesLoaded((prev) => {
@@ -22,10 +22,6 @@ function Tasks() {
     //     return newCount;
     // });
   };
-  const submit = () => {
-    setDone(done + 1)
-  }
-
   return (
     <div className="flex-col space-y-10 text-white">
         <div className="px-5">

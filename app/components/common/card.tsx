@@ -9,9 +9,10 @@ import Slide from "@mui/material/Slide";
 import { TransitionProps } from "@mui/material/transitions";
 import axios from "@/app/axios";
 import { useSnackbar } from "notistack";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../../globals.css";
 import Link from "next/link";
+import { setDone } from "@/redux/reducers/TaskReducer";
 
 interface CardProps {
   title: string;
@@ -32,7 +33,9 @@ const Transition = forwardRef(function Transition(
 });
 
 function Card({ title, description, price, link, img, onLoad}: CardProps) {
+  const dispatch = useDispatch();
   const user = useSelector((x: any) => x.TaskReducer.user);
+  const done = useSelector((x: any) => x.TaskReducer.done);
   const snackbar = useSnackbar();
   const [open, setOpen] = useState(false);
   const [doing, setDoing] = useState(false);
@@ -68,6 +71,7 @@ function Card({ title, description, price, link, img, onLoad}: CardProps) {
         setTimeout(() => (forceRef?.current as any).click(), 1000);
         setOpen(false);
         setDoing(false);
+        dispatch(setDone(done+1));
       });
   };
   return (
@@ -138,20 +142,20 @@ function Card({ title, description, price, link, img, onLoad}: CardProps) {
                 />
                 <div>+{price}</div>
               </span>
-              <span className="flex justify-center mt-[29.08px]">
-                <button
-                  className="px-4 h-[82px] font-semibold text-[24px] bg-main text-white rounded-[16px] transition duration-300 disabled:opacity-40 disabled:cursor-not-allowed w-full overflow-hidden"
-                  onClick={handleBonus}
-                  disabled={doing}
-                >
                   <Link
                     ref={forceRef}
                     className="text-black"
                     target="_self"
                     href={link}
                   >
-                    {title} 
                   </Link>
+              <span className="flex justify-center mt-[29.08px]">
+                <button
+                  className="px-4 h-[82px] font-semibold text-[24px] bg-main text-white rounded-[16px] transition duration-300 disabled:opacity-40 disabled:cursor-not-allowed w-full overflow-hidden"
+                  onClick={handleBonus}
+                  disabled={doing}
+                  >
+                  {title} 
                 </button>
               </span>
             </span>

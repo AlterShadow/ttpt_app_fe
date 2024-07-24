@@ -5,6 +5,7 @@ export const initialState = {
     isLoaded: false,
     mount: 0,
     userId: 0,
+    done: 0,
     user: undefined,
     pubKey: null,
     priKey: null,
@@ -16,6 +17,9 @@ export const TaskReducer = createSlice({
     reducers: {
         setUser: (state, action) => {
             state.user = action.payload
+        },
+        setDone: (state, action) => {
+            state.done = action.payload
         },
         setMount: (state, action) => {
             
@@ -39,6 +43,6 @@ export const TaskReducer = createSlice({
     },
 })
 
-export const { setUser, setMount, setUserId, setTasks, setKeyPairs, removeKeyPairs } = TaskReducer.actions
+export const { setUser, setMount, setDone, setUserId, setTasks, setKeyPairs, removeKeyPairs } = TaskReducer.actions
 
 export default TaskReducer.reducer
