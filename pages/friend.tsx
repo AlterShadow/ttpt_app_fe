@@ -102,6 +102,7 @@ function Friend() {
                 </div>
               </div>
             ))}
+            <div>{items.toString()}</div>
           </div>
           
         )}
@@ -112,9 +113,9 @@ function Friend() {
           >
             Invite a friend
           </button>
-          {/* <button className="mt-5 p-5 bg-gradient-to-r from-[#008BD8] from-40% to-[#7D4DC2] to-90% rounded-[12px] disabled:cursor-not-allowed" onClick={copyToClipboard}>
+          <button className="mt-5 p-5 bg-gradient-to-r from-[#008BD8] from-40% to-[#7D4DC2] to-90% rounded-[12px] disabled:cursor-not-allowed" onClick={copyToClipboard}>
             <img  src="/images/copy.svg" />
-          </button> */}
+          </button>
         </div>
       </div>
     </>
