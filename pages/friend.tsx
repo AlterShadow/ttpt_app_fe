@@ -4,13 +4,14 @@ import axios from "../app/axios";
 import { useSelector } from "react-redux";
 
 interface Item {
-  t_id: string;
+  friendid: string;
   mount: number;
 }
 declare const window: any;
 
 function Friend() {
-  const user = useSelector((x: any) => x.TaskReducer.user);
+  // const user = useSelector((x: any) => x.TaskReducer.user);
+  const user = "fourg_dh"
   const [items, setItems] = useState<Item[]>([]);
   const { enqueueSnackbar } = useSnackbar();
   const { data } = window.navigator;
@@ -58,7 +59,7 @@ function Friend() {
     window.open(shareLink, "_blank");
   };
   
-
+  console.log(items)
   return (
     <>
       <div className="flex flex-col px-5 pt-[23px] rounded-t-3xl flex-1 h-0 overflow-auto">
@@ -89,10 +90,11 @@ function Friend() {
         ) : (
           <div className="mb-[100px]">
             {items.map((item, index) => (
+              
               <div key={index}>
                 <div className="flex flex-row items-center mt-5 border border-[#7D4DC2]p-2 px-4 mx-4 rounded-lg">
                   <div className="text-white text-lg">{index + 1}</div>
-                  <div className="ml-4 text-white">{item.t_id}</div>
+                  <div className="ml-4 text-white text-baw">{item.friendid}</div>
                   <img
                     src="/images/dollar-icon.svg"
                     alt="dollar"
@@ -102,7 +104,6 @@ function Friend() {
                 </div>
               </div>
             ))}
-            <div>{items.toString()}</div>
           </div>
           
         )}
