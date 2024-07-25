@@ -4,7 +4,7 @@ import axios from "../app/axios";
 import { useSelector } from "react-redux";
 
 interface Item {
-  friendid: string;
+  tgid: string;
   mount: number;
 }
 declare const window: any;
@@ -94,7 +94,7 @@ function Friend() {
               <div key={index}>
                 <div className="flex flex-row items-center mt-5 border border-[#7D4DC2]p-2 px-4 mx-4 rounded-lg">
                   <div className="text-white text-lg">{index + 1}</div>
-                  <div className="ml-4 text-white text-baw">{item.friendid}</div>
+                  <div className="ml-4 text-white text-baw">{item.tgid}</div>
                   <img
                     src="/images/dollar-icon.svg"
                     alt="dollar"
