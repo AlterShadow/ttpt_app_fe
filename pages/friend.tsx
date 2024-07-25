@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import { useSnackbar } from "notistack";
 import axios from "../app/axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setMount } from "@/redux/reducers/TaskReducer";
 
 interface Item {
   tgid: string;
@@ -15,6 +16,7 @@ function Friend() {
   const [items, setItems] = useState<Item[]>([]);
   const { enqueueSnackbar } = useSnackbar();
   const { data } = window.navigator;
+  const mount = useSelector((x: any) => x.TaskReducer.mount);
   useEffect(() => {
     const fetchData = async () => {
       if (user) {
@@ -46,7 +48,24 @@ function Friend() {
       }
     }
     copyContent();
-}  
+  }
+  const dispatch = useDispatch();
+  const inviteBonus = () => {
+    const func = async () => {
+      await axios.put("https://ttpt-app-be.onrender.com/invitebonus",
+        {user, cnt: items.length + mount}
+      ).then((res: any) => {
+        if(res.status === 200) 
+        {
+          dispatch(setMount(res.data.mount));
+          enqueueSnackbar("Successfully claimed!", { variant: "success" });
+          
+        }
+        else enqueueSnackbar("Claim Failed! Pleae try again.", { variant: "error" });
+      })
+    }
+    func();
+  }
 
   const handleInviteClick = async () => {
     // Generate the invite link
@@ -71,7 +90,7 @@ function Friend() {
               <div className="font-bold text-2xl leading-7">{items.length}</div>
               <div className="font-semibold text-xs leading-5 pl-4">Points</div>
             </div>
-            <div className="flex justify-end items-center px-5 py-1 bg-[#7D4DC2] rounded-lg text-xs leading-6">
+            <div className="flex justify-end items-center px-5 py-1 bg-[#7D4DC2] rounded-lg text-xs leading-6" onClick={inviteBonus}>
               Claim
             </div>
           </div>
@@ -88,19 +107,20 @@ function Friend() {
             <img className="w-[186px] mx-auto" src="/imgs/no.png" /> 
           </>
         ) : (
-          <div className="mb-[100px]">
-            {items.map((item, index) => (
+          <div className="mb-[150px]">
+            <div className="text-white font-bold text-2xl">Friends You Invited</div>
+            {items.map((item, index) => ( 
               
               <div key={index}>
-                <div className="flex flex-row items-center mt-5 border border-[#7D4DC2]p-2 px-4 mx-4 rounded-lg">
+                <div className="flex justify-between items-center mt-2 border border-[#7D4DC2] p-2 px-4 mx-4 rounded-lg">
                   <div className="text-white text-lg">{index + 1}</div>
                   <div className="ml-4 text-white text-baw">{item.tgid}</div>
-                  <img
+                  <div className="flex items-center space-x-1"><img
                     src="/images/dollar-icon.svg"
                     alt="dollar"
                     className="w-4 h-4 ml-6"
-                  ></img>
-                  <div className="ml-2 text-white">{item.mount}</div>
+                  ></img><span>x</span>
+                  <div className="ml-2 text-white">{item.mount}</div></div>
                 </div>
               </div>
             ))}
