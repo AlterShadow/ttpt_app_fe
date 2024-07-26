@@ -56,17 +56,21 @@ function Friend() {
 
     }
     const func = async () => {
-      await axios.put("https://ttpt-app-be.onrender.com/invitebonus",
-        {user, cnt: items.length + mount}
-      ).then((res: any) => {
-        if(res.status === 200) 
-        {
-          enqueueSnackbar(`${JSON.parse(res.data)}`, { variant: "success" });
-          dispatch(setMount(res.data.mount));
-          enqueueSnackbar("Successfully claimed!", { variant: "success" });
-        }
-        else enqueueSnackbar("Claim Failed! Pleae try again.", { variant: "error" });
-      })
+      let cnt = items.length;
+      for(let i = 0 ; i < cnt ; i ++) {
+        await axios.put("https://ttpt-app-be.onrender.com/invitebonus",
+          {user, cnt: items[i].mount}
+        ).then((res: any) => {
+          if(res.status === 200) 
+          {
+            console.log(res.data)
+            enqueueSnackbar(`${res.data.mount}`, { variant: "success" });
+            dispatch(setMount(res.data.mount));
+            enqueueSnackbar("Successfully claimed!", { variant: "success" });
+          }
+          else enqueueSnackbar("Claim Failed! Pleae try again.", { variant: "error" });
+        })
+      }
     }
     func();
   }
