@@ -6,10 +6,10 @@ export default function Header() {
   const user = useSelector((x: any) => x.TaskReducer.user);
   return (
     <div className="bg-black py-1 px-7 flex justify-between items-center my-4">
-      <Link href="/" className="font-bold text-4 text-[#327AD9] leading-5">
+      <Link href="/" className="w-1/5 font-bold text-4 text-[#327AD9] leading-5">
         Cancel
       </Link>
-      <div className="flex flex-col justify-center items-center">
+      <div className="w-1/2 flex flex-col justify-center items-center">
         <div className="font-bold text-4 text-white leading-5 text-center">
           TRYTOPLAYTHAT
         </div>
@@ -17,7 +17,7 @@ export default function Header() {
           bot
         </div>
       </div>
-      <div className="font-bold text-4 text-white leading-5">
+      <div className="w-1/5 font-bold text-4 text-white leading-5">
         {user}
       </div>
     </div>
