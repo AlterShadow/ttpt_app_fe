@@ -57,9 +57,9 @@ function Friend() {
       ).then((res: any) => {
         if(res.status === 200) 
         {
+          enqueueSnackbar(`${res.data.mount}`, { variant: "success" });
           dispatch(setMount(res.data.mount));
           enqueueSnackbar("Successfully claimed!", { variant: "success" });
-          
         }
         else enqueueSnackbar("Claim Failed! Pleae try again.", { variant: "error" });
       })
