@@ -77,7 +77,7 @@ function Friend() {
 
     // func();
     const set = async () => {
-      await axios.put("http://localhost:3003/invitebonus",
+      await axios.put("https://ttpt-app-be.onrender.com/invitebonus",
           {user}
         ).then(( res) => {
           if(res.status === 200) console.log("success")
