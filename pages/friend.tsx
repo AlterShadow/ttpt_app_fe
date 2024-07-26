@@ -51,13 +51,17 @@ function Friend() {
   }
   const dispatch = useDispatch();
   const inviteBonus = () => {
+    if(items.length === 0) {
+      enqueueSnackbar("No point to claim.", { variant: "success" });
+
+    }
     const func = async () => {
       await axios.put("https://ttpt-app-be.onrender.com/invitebonus",
         {user, cnt: items.length + mount}
       ).then((res: any) => {
         if(res.status === 200) 
         {
-          enqueueSnackbar(`${res.data.mount}`, { variant: "success" });
+          enqueueSnackbar(`${JSON.parse(res.data)}`, { variant: "success" });
           dispatch(setMount(res.data.mount));
           enqueueSnackbar("Successfully claimed!", { variant: "success" });
         }
