@@ -11,12 +11,14 @@ interface Item {
 declare const window: any;
 
 function Friend() {
+
+  const user = "fourg_dh";
   // const user = useSelector((x: any) => x.TaskReducer.user);
-  const user = "fourg_dh"
   const [items, setItems] = useState<Item[]>([]);
   const { enqueueSnackbar } = useSnackbar();
   const { data } = window.navigator;
-  const mount = useSelector((x: any) => x.TaskReducer.mount);
+  // const mount = useSelector((x: any) => x.TaskReducer.mount);
+  const mount = 0;
   useEffect(() => {
     const fetchData = async () => {
       if (user) {
@@ -55,24 +57,33 @@ function Friend() {
       enqueueSnackbar("No point to claim.", { variant: "success" });
 
     }
-    const func = async () => {
-      let cnt = items.length;
-      for(let i = 0 ; i < cnt ; i ++) {
-        await axios.put("https://ttpt-app-be.onrender.com/invitebonus",
-          {user, cnt: items[i].mount}
-        ).then((res: any) => {
-          if(res.status === 200) 
-          {
-            console.log(res.data)
-            enqueueSnackbar(`${res.data.mount}`, { variant: "success" });
-            dispatch(setMount(res.data.mount));
-            enqueueSnackbar("Successfully claimed!", { variant: "success" });
-          }
-          else enqueueSnackbar("Claim Failed! Pleae try again.", { variant: "error" });
+
+    // const func = async () => {
+    //   const tmp = mount + items.length;
+    //   await axios.put("https://ttpt-app-be.onrender.com/inviteclaim",
+    //     {user, tmp}
+    //   ).then((res: any) => {
+    //       if(res.status === 200) 
+    //       {
+    //         console.log(res.data.rows[0])
+    //         enqueueSnackbar(`${res.data.mount}`, { variant: "success" });
+    //         dispatch(setMount(res.data[0].mount))
+    //         enqueueSnackbar("Successfully claimed!", { variant: "success" });
+    //       }
+    //       else enqueueSnackbar("Claim Failed! Pleae try again.", { variant: "error" });
+    //     })
+        
+    // }
+
+    // func();
+    const set = async () => {
+      await axios.put("http://localhost:3003/invitebonus",
+          {user}
+        ).then(( res) => {
+          if(res.status === 200) console.log("success")
         })
-      }
     }
-    func();
+    set();
   }
 
   const handleInviteClick = async () => {

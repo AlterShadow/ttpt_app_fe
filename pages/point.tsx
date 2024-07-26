@@ -23,7 +23,10 @@ function Point() {
       if(data.length) {
         for(let i = 0 ; i < data.length ; i ++) {
           sum += data[i].mount;
-          if(user === data[i].tgid) dispatch(setMount(data[i].mount))
+          console.log(data[i])
+          if(user === data[i].tgid) {
+            dispatch(setMount(data[i].mount))
+          }
         }
         setTotal(sum);
       }
