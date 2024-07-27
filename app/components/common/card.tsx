@@ -59,19 +59,22 @@ function Card({ title, description, price, link, img, onLoad}: CardProps) {
       })
       .then((response: any) => {
         console.log(response.data);
-        if (response.data.stats == "success")
+        if (response.data.stats == "success") {
           snackbar.enqueueSnackbar(
             `You gain ${price} coins.  Your balance is ${response.data.mount}`,
             { autoHideDuration: 1000 }
           );
-        else
+          setTimeout(() => (forceRef?.current as any).click(), 1000);
+          dispatch(setDone(done+1));
+        }
+        else {
           snackbar.enqueueSnackbar("You need to wait 24 hours for next time", {
             autoHideDuration: 1000,
           });
-          setTimeout(() => (forceRef?.current as any).click(), 1000);
+        }
+          
           setOpen(false);
           setDoing(false);
-          dispatch(setDone(done+1));
       });
   };
   return (

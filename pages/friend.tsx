@@ -22,14 +22,17 @@ function Friend() {
   useEffect(() => {
     const fetchData = async () => {
       if (user) {
-        const response = await axios.post(
-          "https://ttpt-app-be.onrender.com/friends",
+        const res = await axios.post(
+          "http://localhost:3003/friends",
           {
             user,
           }
         );
-        if (response.data.items == undefined) setItems([]);
-        else setItems(response.data.items);
+        if (res.data.items == undefined) setItems([]);
+        else {
+          setItems(res.data.items);
+          
+        }
       }
     };
     fetchData();
@@ -58,29 +61,29 @@ function Friend() {
 
     }
 
-    // const func = async () => {
-    //   const tmp = mount + items.length;
-    //   await axios.put("https://ttpt-app-be.onrender.com/inviteclaim",
-    //     {user, tmp}
-    //   ).then((res: any) => {
-    //       if(res.status === 200) 
-    //       {
-    //         console.log(res.data.rows[0])
-    //         enqueueSnackbar(`${res.data.mount}`, { variant: "success" });
-    //         dispatch(setMount(res.data[0].mount))
-    //         enqueueSnackbar("Successfully claimed!", { variant: "success" });
-    //       }
-    //       else enqueueSnackbar("Claim Failed! Pleae try again.", { variant: "error" });
-    //     })
+    const func = async () => {
+      const tmp = mount + items.length;
+      await axios.put("http://localhost:3003/inviteclaim",
+        {user, tmp}
+      ).then((res: any) => {
+          if(res.status === 200) 
+          {
+            console.log(res.data.rows[0])
+            enqueueSnackbar(`${res.data.mount}`, { variant: "success" });
+            dispatch(setMount(res.data[0].mount))
+            enqueueSnackbar("Successfully claimed!", { variant: "success" });
+          }
+          else enqueueSnackbar("Claim Failed! Pleae try again.", { variant: "error" });
+        })
         
-    // }
+    }
 
-    // func();
+    func();
     const set = async () => {
-      await axios.put("https://ttpt-app-be.onrender.com/invitebonus",
+      await axios.put("http://localhost:3003/invitebonus",
           {user}
         ).then(( res) => {
-          if(res.status === 200) console.log("success")
+          if(res.status === 200) alert("success")
         })
     }
     set();

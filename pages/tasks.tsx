@@ -14,17 +14,20 @@ function Tasks() {
   const mainTasks = allTasks?.filter((x: any) => x.extra === false)
   const [cnt, setCnt] = useState(mainTasks.length);
   const done = useSelector((x: any) => x.TaskReducer.done);
+  const user = useSelector((x: any) => x.TaskReducer.user);
+  useEffect(() => {
+    const func = async () => {
+      await axios.post("https://ttpt-app-be.onrender.com/getsocial", {user : user}).then((res) => {
+        if(res.status === 200) console.log(res.data) 
+      })
+    }
+  })
   // useEffect(() => {
   //   const func = async () => {
   //     await axios.get("https://ttpt-app-be.onrender.com/users")
   //   }
   // })
-  const user = useSelector((x: any) => x.TaskReducer.user);
-  useEffect(() => {
-    if(done > cnt) {
-      dispatch(setDone(cnt))
-    }
-  })
+
   const handleImageLoad = () => {
     // setImagesLoaded((prev) => {
     //     console.log(prev)
@@ -57,13 +60,13 @@ function Tasks() {
           </div>
           <div className="w-full border-2 border-[#7D4DC2] flex justify-between rounded-xl px-5">
             <div className="w-1/2 pt-2 pb-1 px-2">
-              <div className="">Complete {done}/{cnt}</div>
+              <div className="">Complete {done>0 ? done : 0}/{cnt}</div>
               <div className="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700">
               <div className="bg-blue-600 h-2.5 rounded-full" style={{width:done*100/cnt + "%"}} ></div>
               </div>
             </div>
             <div className="w-1/2 px-2 pt-2 pb-1 font-semibold text-[34px] leading-[43px] border-l-2 border-[#7D4DC2] rounded-xl flex items-center justify-center">
-              +{done} <span className="text-[13px] leading-9 pl-2">Points</span>
+              {done >0 ? "+" + done : 0} <span className="text-[13px] leading-9 pl-2">Points</span>
             </div>
           </div>
         </div>
